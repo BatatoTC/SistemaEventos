@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const session = require('express-session');
+const passport = require('passport');
+//const autenticacao = require('./config/autenticacao');
+
+var moment = require('moment');
+app.locals.moment = moment;
 
 const adminRoute = require("./routes/admin/adminRoute");
 const eventoRoute = require("./routes/admin/eventoRoute");
@@ -17,9 +23,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
+//app.use("/", publicRoute);
+app.use("/admin", loginRoute);
 app.use("/admin", adminRoute);
 app.use("/admin", eventoRoute);
-app.use("/admin", loginRoute);
 app.use("/admin", ministranteRoute);
 app.use("/admin", noticiaRoute);
 app.use("/admin", oficinaRoute);

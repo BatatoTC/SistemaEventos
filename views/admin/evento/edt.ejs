@@ -4,36 +4,65 @@
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
-                    <div class="card-header"><strong>Form control</strong></div>
+                    <div class="card-header"><strong>Evento</strong></div>
                     <div class="card-body">
                         <div class="example">
                             <div class="tab-content rounded-bottom">
                                 <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-739">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="exampleFormControlInput">ID</label>
-                                            <input class="form-control" id="exampleFormControlInput" type="text">
+                                    <form method="post" enctype="multipart/form-data">
+                                         <!--ID-->
+                                         <div class="mb-3">
+                                            <label class="form-label" for="exampleFormControlInput1">Id</label>
+                                            <input class="form-control" name="id" id="exampleFormControlInput1" type="text" readonly value="<%=Evento.id%>">
                                         </div>
+                                        <!--Nome-->
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleFormControlInput1">Nome</label>
-                                            <input class="form-control" name="nome" id="exampleFormControlInput1" type="text"
-                                                placeholder="Digite o nome!">
+                                            <input class="form-control" name="nome" id="exampleFormControlInput1" type="text" value="<%=Evento.nome%>">
                                         </div>
+                                        <!--Frase-->
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleFormControlInput2">Email</label>
-                                            <input class="form-control" name="email" id="exampleFormControlInput2" type="email"
-                                                placeholder="name@example.com">
+                                            <label class="form-label" for="exampleFormControlInput2">Frase</label>
+                                            <input class="form-control" name="frase" id="exampleFormControlInput2" type="text" value="<%=Evento.frase%>">
                                         </div>
+                                        <!--Sobre-->
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleFormControlInput3">Senha</label>
-                                            <input class="form-control" name="senha" id="exampleFormControlInput3" type="password"
-                                                placeholder="Digite a senha!">
+                                            <label class="form-label" for="exampleFormControlInput3">Sobre</label>
+                                            <input class="form-control" name="sobre" id="exampleFormControlInput3" type="text" value="<%=Evento.sobre%>">
                                         </div>
+                                        <!--Local-->
                                         <div class="mb-3">
-                                            <label class="form-label" for="formFile">Foto</label>
-                                            <input class="form-control" name="foto" id="formFile" type="file">
+                                            <label class="form-label" for="exampleFormControlInput3">Local</label>
+                                            <input class="form-control" name="local" id="exampleFormControlInput3" type="text" value="<%=Evento.local%>">
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                                        <!--Data Inicio-->
+                                        <div class="mb-3">
+                                            <label class="form-label" for="exampleFormControlInput3">Data de Inicio</label>
+                                            <input class="form-control" name="datainicio" id="exampleFormControlInput3" type="date" 
+                                                   value="<%=moment(Evento.datainicio).format('YYYY-MM-DD')%>">
+                                        </div>
+                                        <!--Data Fim-->
+                                        <div class="mb-3">
+                                            <label class="form-label" for="exampleFormControlInput3">Data de Término</label>
+                                            <input class="form-control" name="datafim" id="exampleFormControlInput3" type="date"
+                                                   value="<%=moment(Evento.datafim).format('YYYY-MM-DD')%>">
+                                        </div>
+                                        <!--Logo-->
+                                        <div class="mb-3">
+                                            <label class="form-label" for="formFile">Logo</label>
+                                            <input class="form-control" name="logo" id="formFile" type="file">
+                                        </div>
+                                        <!--Banner-->
+                                        <div class="mb-3">
+                                            <label class="form-label" for="formFile">Banner</label>
+                                            <input class="form-control" name="banner" id="formFile" type="file">
+                                        </div>
+                                        <!--Foto Sobre-->
+                                        <div class="mb-3">
+                                            <label class="form-label" for="formFile">Foto Sobre</label>
+                                            <input class="form-control" name="fotosobre" id="formFile" type="file">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Editar</button>
                                         <button type="reset" class="btn btn-light">Limpar</button>
                                     </form>
                                 </div>

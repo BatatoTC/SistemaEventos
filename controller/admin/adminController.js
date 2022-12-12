@@ -4,7 +4,7 @@ const Admin = models.Admin
 
 async function lst(req, res) {
   const admins = await Admin.findAll();
-  res.render("admin/admin/lst", {Admins:admins});};
+  res.render("admin/admin/lst", {Logado:req.user, Admins:admins});};
 
 async function filter(req, res) {
   const admins = await Admin.findAll({
@@ -14,7 +14,7 @@ async function filter(req, res) {
       }
     }
   });
-  res.render("admin/admin/lst" , {Admins:admins});
+  res.render("admin/admin/lst" , {Logado:req.user, Admins:admins});
 };
 
 async function opadd(req, res) {
@@ -22,7 +22,12 @@ async function opadd(req, res) {
 };
 
 async function add(req, res) {
-  const admin = await Admin.create(req.body);
+  const admin = await Admin.create({
+    nome: req.body.nome,
+    email: req.body.email,
+    senha: req.body.senha,
+    foto: req.file.filename
+  });
   res.redirect('/admin/admin/lst');
 };
 
@@ -33,7 +38,12 @@ async function opedt(req, res) {
 
 async function edt(req, res) {
   const admin = await Admin.findByPk(req.params.id);
-  await admin.update(req.body);
+  await admin.update({
+    nome: req.body.nome,
+    email: req.body.email,
+    senha: req.body.senha,
+    foto: req.file.filename
+  });
   res.redirect('/admin/admin/lst');
 };
 
