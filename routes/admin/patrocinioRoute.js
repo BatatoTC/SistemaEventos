@@ -1,19 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const patrocinioController = require("../../controller/admin/patrocinioController");
+const upload = require('../../config/upload');
 
-router.get("/admin/lst", patrocinioController.lst);
+router.get("/patrocinio/lst", patrocinioController.lst);
 
-router.post("/admin/lst", patrocinioController.filter);
+router.post("/patrocinio/lst", patrocinioController.filter);
 
-router.get("/admin/add", patrocinioController.opadd);
+router.get("/patrocinio/add", patrocinioController.opadd);
 
-router.post("/admin/add", patrocinioController.add);
+router.post("/patrocinio/add", upload.single('logo'), patrocinioController.add);
 
-router.get("/admin/edt", patrocinioController.opedt);
+router.get("/patrocinio/edt/:id", patrocinioController.opedt);
 
-router.post("/admin/edt", patrocinioController.edt);
+router.post("/patrocinio/edt/:id", upload.single('logo'), patrocinioController.edt);
 
-router.get("/admin/del", patrocinioController.del);
+router.get("/patrocinio/del/:id", patrocinioController.del);
 
 module.exports = router;

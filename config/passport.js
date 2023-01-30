@@ -19,8 +19,6 @@ passport.use(
     })
 );
 
-module.exports = passport;
-
 passport.serializeUser(function(user, cb){
     process.nextTick(function(){
         cb(null), {
@@ -37,3 +35,5 @@ passport.deserializeUser(function(user, cb){
         return cb(null, user);
     });
 });
+
+module.exports = passport;
