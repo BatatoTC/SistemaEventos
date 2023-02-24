@@ -1,7 +1,7 @@
-async function optela(req, res) {
+async function abretela(req, res) {
   res.render("admin/login.ejs");
-};
+}
 
-async function login(req, res) {};
+async function logar(req, res) {}
 
-module.exports = { optela, login };
+module.exports = { abretela, logar };

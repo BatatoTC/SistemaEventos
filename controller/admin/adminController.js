@@ -18,7 +18,7 @@ async function filter(req, res) {
 };
 
 async function opadd(req, res) {
-  res.render("admin/admin/add");
+  res.render("admin/admin/add",{Logado:req.user});
 };
 
 async function add(req, res) {
@@ -33,7 +33,7 @@ async function add(req, res) {
 
 async function opedt(req, res) {
   const admin = await Admin.findByPk(req.params.id);
-  res.render("admin/admin/edt", {Admin:admin});
+  res.render("admin/admin/edt", {Logado:req.user, Admin:admin});
 };
 
 async function edt(req, res) {

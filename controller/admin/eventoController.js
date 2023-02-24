@@ -18,7 +18,7 @@ async function filter(req, res) {
 };
 
 async function opadd(req, res) {
-  res.render("admin/evento/add");
+  res.render("admin/evento/add", {Logado:req.user});
 };
 
 async function add(req, res) {
@@ -38,7 +38,7 @@ async function add(req, res) {
 
 async function opedt(req, res) {
   const evento = await Evento.findByPk(req.params.id);
-  res.render("admin/evento/edt", {Evento:evento});
+  res.render("admin/evento/edt", {Logado:req.user, Evento:evento});
 };
 
 async function edt(req, res) {

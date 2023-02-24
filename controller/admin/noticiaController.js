@@ -4,7 +4,7 @@ const Noticia = models.Noticia
 
 async function lst(req, res) {
   const noticias = await Noticia.findAll();
-  res.render("admin/noticia/lst", {Noticias:noticias});};
+  res.render("admin/noticia/lst", {Logado:req.user, Noticias:noticias});};
 
 async function filter(req, res) {
   const noticias = await Noticia.findAll({
@@ -14,12 +14,12 @@ async function filter(req, res) {
       }
     }
   });
-  res.render("admin/noticia/lst" , {Noticias:noticias});
+  res.render("admin/noticia/lst" , {Logado:req.user, Noticias:noticias});
 };
 
 async function opadd(req, res) {
   const eventos = await models.Evento.findAll({});
-  res.render("admin/noticia/add", {Eventos:eventos});
+  res.render("admin/noticia/add", {Logado:req.user, Eventos:eventos});
 };
 
 async function add(req, res) {
@@ -36,7 +36,7 @@ async function add(req, res) {
 async function opedt(req, res) {
   const eventos = await models.Evento.findAll({})
   const noticia = await Noticia.findByPk(req.params.id);
-  res.render("admin/noticia/edt", {Noticia:noticia, Eventos:eventos});
+  res.render("admin/noticia/edt", {Logado:req.user, Noticia:noticia, Eventos:eventos});
 };
 
 async function edt(req, res) {

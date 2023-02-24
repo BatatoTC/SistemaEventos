@@ -2,18 +2,18 @@ const express = require("express");
 const router = express.Router();
 const oficinaController = require("../../controller/admin/oficinaController");
 
-router.get("/admin/lst", oficinaController.lst);
+router.get("/oficina/lst", oficinaController.lst);
 
-router.post("/admin/lst", oficinaController.filter);
+router.post("/oficina/lst", oficinaController.filter);
 
-router.get("/admin/add", oficinaController.opadd);
+router.get("/oficina/add", oficinaController.opadd);
 
-router.post("/admin/add", oficinaController.add);
+router.post("/oficina/add", oficinaController.add);
 
-router.get("/admin/edt", oficinaController.opedt);
+router.get("/oficina/edt/:id", oficinaController.opedt);
 
-router.post("/admin/edt", oficinaController.edt);
+router.post("/oficina/edt/:id", oficinaController.edt);
 
-router.get("/admin/del", oficinaController.del);
+router.get("/oficina/del/:id", oficinaController.del);
 
 module.exports = router;

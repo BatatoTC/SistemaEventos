@@ -1,19 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const ministranteController = require("../../controller/admin/ministranteController");
+const upload = require("../../config/upload");
 
-router.get("/admin/lst", ministranteController.lst);
+router.get("/ministrante/lst", ministranteController.lst);
 
-router.post("/admin/lst", ministranteController.filter);
+router.post("/ministrante/lst", ministranteController.filter);
 
-router.get("/admin/add", ministranteController.opadd);
+router.get("/ministrante/add", ministranteController.opadd);
 
-router.post("/admin/add", ministranteController.add);
+router.post("/ministrante/add", upload.single('foto'), ministranteController.add);
 
-router.get("/admin/edt", ministranteController.opedt);
+router.get("/ministrante/edt/:id", ministranteController.opedt);
 
-router.post("/admin/edt", ministranteController.edt);
+router.post("/ministrante/edt/:id", upload.single('foto'), ministranteController.edt);
 
-router.get("/admin/del", ministranteController.del);
+router.get("/ministrante/del/:id", ministranteController.del);
 
 module.exports = router;

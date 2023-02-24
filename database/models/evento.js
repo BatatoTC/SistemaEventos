@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       },models.Noticia,{
         foreignKey: 'eventoId',
         as: 'noticias'
+      },models.Oficina,{
+        foreignKey: 'eventoId',
+        as: 'oficinas'
       });
     }
   }

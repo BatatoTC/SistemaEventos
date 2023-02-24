@@ -4,7 +4,7 @@ const Patrocinio = models.Patrocinio
 
 async function lst(req, res) {
   const patrocinios = await Patrocinio.findAll();
-  res.render("admin/patrocinio/lst", {Patrocinios:patrocinios});};
+  res.render("admin/patrocinio/lst", {Logado:req.user, Patrocinios:patrocinios});};
 
 async function filter(req, res) {
   const patrocinios = await Patrocinio.findAll({
@@ -14,12 +14,12 @@ async function filter(req, res) {
       }
     }
   });
-  res.render("admin/patrocinio/lst" , {Patrocinios:patrocinios});
+  res.render("admin/patrocinio/lst" , {Logado:req.user, Patrocinios:patrocinios});
 };
 
 async function opadd(req, res) {
   const eventos = await models.Evento.findAll({});
-  res.render("admin/patrocinio/add", {Eventos:eventos});
+  res.render("admin/patrocinio/add", {Logado:req.user, Eventos:eventos});
 };
 
 async function add(req, res) {
@@ -35,7 +35,7 @@ async function add(req, res) {
 async function opedt(req, res) {
   const eventos = await models.Evento.findAll({})
   const patrocinio = await Patrocinio.findByPk(req.params.id);
-  res.render("admin/patrocinio/edt", {Patrocinio:patrocinio, Eventos:eventos});
+  res.render("admin/patrocinio/edt", {Logado:req.user, Patrocinio:patrocinio, Eventos:eventos});
 };
 
 async function edt(req, res) {

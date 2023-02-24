@@ -1,6 +1,6 @@
-module.exports = function(req, res, next){
-    if(req.isAutheticated()){
+module.exports = function (req, res, next) {
+    if(req.isAuthenticated()){
         return next();
-    };
-    res.redirect('/admin');
+    }
+    res.redirect("/admin");
 };

@@ -2,18 +2,18 @@ const express = require("express");
 const router = express.Router();
 const palestraController = require("../../controller/admin/palestraController");
 
-router.get("/admin/lst", palestraController.lst);
+router.get("/palestra/lst", palestraController.lst);
 
-router.post("/admin/lst", palestraController.filter);
+router.post("/palestra/lst", palestraController.filter);
 
-router.get("/admin/add", palestraController.opadd);
+router.get("/palestra/add", palestraController.opadd);
 
-router.post("/admin/add", palestraController.add);
+router.post("/palestra/add", palestraController.add);
 
-router.get("/admin/edt", palestraController.opedt);
+router.get("/palestra/edt/:id", palestraController.opedt);
 
-router.post("/admin/edt", palestraController.edt);
+router.post("/palestra/edt/:id", palestraController.edt);
 
-router.get("/admin/del", palestraController.del);
+router.get("/palestra/del/:id", palestraController.del);
 
 module.exports = router;
